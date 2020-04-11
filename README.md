@@ -19,14 +19,10 @@ This project is part of <b>Udacity's Deep Reinforcement Learning Nanodegree</b> 
 ## Demo
 
 <p align='center'>
-  <img src='images/demo-one.gif' alt='Demonstration of the trained single agent'>
-</p>
-
-<p align='center'>
   <img src='images/demo.gif' alt='Demonstration of the trained twenty agent'>
 </p>
 
-<p>The thing I truly loved is even though the agent was trained on the environment with <b>twenty (20)</b> agents but it was able to generalize for a <b>single (1)</b> agent. :heart:. This is the power of generalization of a Neural Network :muscle: :sunglasses:.</p>
+<p align="justify">The thing I loved about this is that though both have the same neural network architecture and share the same replay buffer but still one agent is able to win this is due to the stochastic training of neural network unlike a deterministic one :heart:.</p> 
 
 ## Steps to run
 
@@ -34,7 +30,7 @@ This project is part of <b>Udacity's Deep Reinforcement Learning Nanodegree</b> 
   <li>Clone the repository:<br><br>
 
   ```console
-  user@programer:~$ git clone https://github.com/frankhart2018/reacher-agent
+  user@programer:~$ git clone https://github.com/frankhart2018/multi-agent-tennis
   ```
 
   </li>
