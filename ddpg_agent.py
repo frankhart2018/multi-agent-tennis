@@ -14,7 +14,7 @@ BUFFER_SIZE = int(1e5)  # Replay buffer size
 BATCH_SIZE = 256        # Minibatch size
 GAMMA = 0.99            # Discount factor
 TAU = 1e-2              # For soft update of target parameters
-LR_ACTOR = 1e-3         # Learning rate of the actor 
+LR_ACTOR = 1e-3         # Learning rate of the actor
 LR_CRITIC = 1e-3        # Learning rate of the critic
 WEIGHT_DECAY = 0
 
@@ -22,10 +22,10 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 class Agent():
     """Interacts with and learns from the environment."""
-    
+
     def __init__(self, state_size, action_size, memory=None, random_seed=0):
         """Initialize an Agent object.
-        
+
         Params
         ======
             state_size (int): dimension of each state
@@ -48,13 +48,13 @@ class Agent():
 
         # Noise process
         self.noise = OUNoise(action_size, random_seed)
-        
+
         # Replay memory
         if memory is not None:
             self.memory = memory
         else:
             self.memory = ReplayBuffer(action_size, BUFFER_SIZE, BATCH_SIZE, random_seed)
-    
+
     def step(self, state, action, reward, next_state, done):
         """Save experience in replay memory, and use random sample from buffer to learn."""
         # Save experience / reward
@@ -74,7 +74,7 @@ class Agent():
         if add_noise:
             action += self.noise.sample()
         self.actor_local.train()
-        
+
         return np.clip(action, -1, 1)
 
     def reset(self):
@@ -89,7 +89,7 @@ class Agent():
 
         Params
         ======
-            experiences (Tuple[torch.Tensor]): tuple of (s, a, r, s', done) tuples 
+            experiences (Tuple[torch.Tensor]): tuple of (s, a, r, s', done) tuples
             gamma (float): discount factor
         """
         states, actions, rewards, next_states, dones = experiences
@@ -106,7 +106,6 @@ class Agent():
         # Minimize the loss
         self.critic_optimizer.zero_grad()
         critic_loss.backward()
-#         torch.nn.utils.clip_grad_norm_(self.critic_local.parameters(), 1)
         self.critic_optimizer.step()
 
         # ---------------------------- update actor ---------------------------- #
@@ -117,7 +116,7 @@ class Agent():
         self.actor_optimizer.zero_grad()
         actor_loss.backward()
         self.actor_optimizer.step()
-        
+
         # ----------------------- update target networks ----------------------- #
         self.soft_update(self.critic_local, self.critic_target, TAU)
         self.soft_update(self.actor_local, self.actor_target, TAU)
@@ -130,11 +129,11 @@ class Agent():
         ======
             local_model: PyTorch model (weights will be copied from)
             target_model: PyTorch model (weights will be copied to)
-            tau (float): interpolation parameter 
+            tau (float): interpolation parameter
         """
         for target_param, local_param in zip(target_model.parameters(), local_model.parameters()):
             target_param.data.copy_(tau*local_param.data + (1.0-tau)*target_param.data)
-            
+
 class OUNoise:
     """Ornstein-Uhlenbeck process."""
 
