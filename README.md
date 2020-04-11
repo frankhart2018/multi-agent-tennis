@@ -125,8 +125,8 @@ This project is part of <b>Udacity's Deep Reinforcement Learning Nanodegree</b> 
 | Hyperparameter           | Value  | Description                                               |
 |--------------------------|--------|-----------------------------------------------------------|
 | Buffer size              | 100000 | Maximum size of the replay buffer                         |
-| Batch size               | 128    | Batch size for sampling from replay buffer                |
+| Batch size               | 256    | Batch size for sampling from replay buffer                |
 | Gamma (<b>γ</b>)         | 0.99   | Discount factor for calculating return                    |
-| Tau (<b>τ</b>)           | 0.001  | Hyperparameter for soft update of target parameters       |
-| Learning Rate Actor      | 0.0003 | Learning rate for the actor neural network                |
+| Tau (<b>τ</b>)           | 0.01   | Hyperparameter for soft update of target parameters       |
+| Learning Rate Actor      | 0.001  | Learning rate for the actor neural network                |
 | Learning Rate Critic     | 0.001  | Learning rate for the critic neural network               |
